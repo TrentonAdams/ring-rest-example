@@ -12,4 +12,5 @@
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler ring.core/router}
   :target-path "target/%s"
+  :jvm-opts ["-Djava.awt.headless=true"]
   :profiles {:uberjar {:aot :all}})

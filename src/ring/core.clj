@@ -32,6 +32,7 @@
       (wrap-params {:encoding "UTF-8"})
   ))
 
+
 ;; Handler that keeps track of how many times each session has accessed the service
 ;; This demonstrates cookies and sessions
 (def request-count-handler

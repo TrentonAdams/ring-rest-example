@@ -1,19 +1,16 @@
-# clojure-noob
+# Ring Rest Example
 
-FIXME: description
-
-## Installation
-
-Download from http://example.com/FIXME.
+This is just a basic example obtained from a variety of sources.  But most
+of it is from [Baeldung](https://www.baeldung.com/clojure-ring), who provided 
+an incomplete example as it only responds to a single end-point, so I wrapped 
+it with compojure.
 
 ## Usage
-
-FIXME: explanation
 
 Start the server...
 
 ```bash
-lein ring server
+lein ring server-headless
 ```
 
 Curl the endpoints...
@@ -27,21 +24,16 @@ curl -c cookies.txt -b cookies.txt "http://localhost:3000/count"
 curl -c cookies.txt -b cookies.txt "http://localhost:3000/count"
 ```
 
-## Options
+## Docker
 
-FIXME: listing of options this app accepts.
+The docker is arranged so that dependency caching happens first, making it
+so that the only time dependencies need to be resolved is when you change 
+`project.clj`.
 
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+```bash
+docker build -t ring-rest-example ./
+docker run -p 3000:3000 -it --rm ring-rest-example
+```
 
 ## License
 
