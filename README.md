@@ -1,8 +1,9 @@
 # Ring Rest Example
 
-This is just a basic example obtained from a variety of sources.  But most
-of it is from [Baeldung](https://www.baeldung.com/clojure-ring), who provided 
-an incomplete example as it only responds to a single end-point, so I wrapped 
+This is just a basic clojure/ring rest example obtained from a variety of
+sources.  But most of it is from
+[Baeldung](https://www.baeldung.com/clojure-ring), who provided an
+incomplete example as it only responds to a single end-point, so I wrapped
 it with compojure.
 
 ## Usage
