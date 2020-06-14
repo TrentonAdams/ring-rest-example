@@ -11,16 +11,20 @@
 
 ;; Handler that just echos back the string "Hello World"
 (defn root-handler [request]
-  {:status 200
-   :headers {"Content-Type" "text/plain"}
-   :body "Hello World"})
+  (do
+    ;(println request)
+    {:status  200
+     :headers {"Content-Type" "text/plain"}
+     :body    "Hello World"}
+    ))
 
 ;; Handler that echos back the clients IP Address
-;; This demonstrates building responses properly, and extracting values from the request
+;; This demonstrates building responses properly, and extracting values from
+;; the request
 (defn check-ip-handler [request]
-    (content-type
-        (response (:remote-addr request))
-        "text/plain"))
+  (content-type
+    (response (:remote-addr request))
+    "text/plain"))
 
 ;; Handler that echos back the incoming parameter "input"
 ;; This demonstrates middleware chaining and accessing parameters
@@ -29,8 +33,8 @@
         (content-type
           (response (get params "input"))
           "text/plain"))
-      (wrap-params {:encoding "UTF-8"})
-  ))
+    (wrap-params {:encoding "UTF-8"})
+    ))
 
 
 ;; Handler that keeps track of how many times each session has accessed the service
@@ -40,10 +44,10 @@
         (let [count (:count session 0)
               session (assoc session :count (inc count))]
           (-> (response (str "You accessed this page " count " times."))
-              (assoc :session session))))
-      wrap-cookies
-      (wrap-session {:cookie-attrs {:max-age 3600}})
-  ))
+            (assoc :session session))))
+    wrap-cookies
+    (wrap-session {:cookie-attrs {:max-age 3600}})
+    ))
 
 ;; Run the provided handler on port 3000
 (defn run
@@ -56,4 +60,4 @@
   (GET "/echo" request (echo-handler request))
   (GET "/count" wrap-session request-count-handler)
   (route/not-found "<h1>Page not found</h1>")
-)
+  )
